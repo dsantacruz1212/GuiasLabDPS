@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+
 export const Header = ({
 allProducts,
 setAllProducts,
@@ -9,19 +10,25 @@ setCountProducts,
 setTotal,
 }) => {
 const [active, setActive] = useState(false);
+
 const onDeleteProduct = product => {
 const results = allProducts.filter(
 item => item.id !== product.id
 );
+
 setTotal(total - product.price * product.quantity);
 setCountProducts(countProducts - product.quantity);
 setAllProducts(results);
 };
+
 const onCleanCart = () => {
 setAllProducts([]);
 setTotal(0);
 setCountProducts(0);
 };
+
+// SE AGREGO UN <IMG> mandando a llamar a product.ulrimage con la informacion de la imagen del libro que se añade al carrito 
+
 return (
 <header>
 <h1>Tienda de Libros</h1>
@@ -56,12 +63,21 @@ className='cantidad-producto-carrito'>
 </span>
 <p
 className='titulo-producto-carrito'>
-{product.title}
+- {product.title}
 </p>
+
+
+<img
+src={product.urlImage} alt="imagen"
+className="imagen-producto-carrito"
+/>
+
 <span
 className='precio-producto-carrito'>
 ${product.price}
 </span>
+
+
 </div>
 <img
 src="https://static.vecteezy.com/system/resources/previews/018/887/462/original/signs-close-icon-png.png"

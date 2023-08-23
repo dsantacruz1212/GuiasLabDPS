@@ -32,5 +32,31 @@ title:'Harry Potter Pack',
 price:390,
 urlImage:'https://contentv2.tap-commerce.com/cover/large/9789878000473_1.jpg?id_com=1113',
 quantity:1
-}
+} ,
+{
+    id:6,
+    title:'Juegos del Hambre Pack',
+    price:300,
+    urlImage:'https://infoliteraria.com/wp-content/uploads/2021/11/F69.jpg',
+    quantity:1
+    }
+
+    ,
+    {
+        id:7,
+        title:'Maze Runner ',
+        price:30,
+        urlImage:'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFzoZHuIpnt5vZ5y29iXwfbA8-mM3Cb6irBN1rtmaCvivwRTfRm2tbNqqUNYkbfJQVOD6cKLLGkM2GTGJMZsLuCy0lUmZFUXXXohqRvvfSM9-RPrPU9v2goeBk3JjYIbxYiKWfTJnl4dPklXXYq95FDadEUyFurAb2Brkx4OO6EA4SQKxGHD6UgObW/s1155/cura%20mortal.webp',
+        quantity:1
+        }
+
+        ,
+        {
+            id:8,
+            title:'IT',
+            price:300,
+            urlImage:'https://dev.lareviewofbooks.org/wp-content/uploads/2016/09/paavpdqsbtggtmn4smxs.png',
+            quantity:1
+            }     
+
 ];

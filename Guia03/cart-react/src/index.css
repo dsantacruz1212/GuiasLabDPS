@@ -103,6 +103,11 @@ header{
     font-size: 20px;
 }
 
+.imagen-producto-carrito{
+  width: 25px;
+  height: 25px;
+}
+
 .icon-close{
     width: 25px;
     height: 25px;
