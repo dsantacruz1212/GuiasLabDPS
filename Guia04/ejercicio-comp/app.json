@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "ejercicio-comp",
+    "slug": "ejercicio-comp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "ejercicio-comp"
+}
