@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "mapas",
+    "slug": "mapas",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "mapas"
+}
