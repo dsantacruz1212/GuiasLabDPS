@@ -7,6 +7,8 @@ const Pais = ({ resultado }) => {
   const [capital, setcapital] = useState();
   const [region, setregion] = useState();
   const [lengua, setlengua] = useState([]);
+  const [area, setarea] = useState();
+
   useEffect(() => {
     setinfo(resultado);
     lengua.length = 0;
@@ -14,11 +16,13 @@ const Pais = ({ resultado }) => {
       setnombre(e.nome.abreviado);
       setcapital(e.governo.capital.nome);
       setregion(e.localizacao.regiao.nome);
+      setarea(e.area.total);
       Object.values(e.linguas).map((l) => {
         lengua.push(l.nome);
       });
     });
   });
+
   return (
     <Card>
       <Card.Title>{nombre}</Card.Title>
@@ -27,6 +31,7 @@ const Pais = ({ resultado }) => {
         <Text>Capital:{capital}</Text>
         <Text>Region:{region}</Text>
         <Text>Lengua:{lengua.toString()}</Text>
+        <Text>Area:{area} km2</Text>
       </View>
     </Card>
   );
