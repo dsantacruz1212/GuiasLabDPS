@@ -5,29 +5,28 @@ import {
   View,
   StyleSheet,
   TouchableWithoutFeedback,
-  Alert,
   Animated,
+  Alert
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
-const Formulario = ({ busqueda, guardarbusqueda }) => {
-  
-  const [selectedCountry, setSelectedCountry] = useState('');
+
+const Formulario = ({ busqueda,guardarbusqueda ,guardarconsultar}) => {
   const { pais } = busqueda;
+  const [selectedCountry, setSelectedCountry] = useState();
 
-  const consultarPais = () => {
-    console.log('Botón presionado'); 
-    if (!selectedCountry || !selectedCountry.trim()) {
-      mostrarAlerta();
-      return;
-    }
-    guardarbusqueda(true);
-  };
+const consultarPais=()=>{
+  if( pais.trim()===''){
+    mostrarAlerta();
+    return;
+  }
+  guardarbusqueda(true);
+};
 
-  const mostrarAlerta = () => {
-    Alert.alert("Error", "Debe seleccionar un país.", [{ text: "Entendido" }]);
-  };
-  console.log('Valor del país:', selectedCountry);
+const mostrarAlerta=()=>{
+  Alert.alert('Error','Debe sleccionar un pais'),[{Text:'Entendido'}]
+}
+
   return (
     <>
       <View>
@@ -58,11 +57,14 @@ const Formulario = ({ busqueda, guardarbusqueda }) => {
             <Picker.Item label="Peru" value="pe" />
           </Picker>
         </View>
-        <TouchableWithoutFeedback onPress={() => consultarPais()}>
-          <View style={styles.btnBuscar}>
-            <Text style={styles.textoBuscar}>Buscar País</Text>
-          </View>
-        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => {
+  guardarbusqueda({ ...busqueda, pais: selectedCountry });
+  guardarconsultar(true);
+}}>
+  <View style={styles.btnBuscar}>
+    <Text style={styles.textoBuscar}>Buscar País</Text>
+  </View>
+</TouchableWithoutFeedback>
       </View>
     </>
   );

@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Card } from "react-native-elements";
-
 const Pais = ({ resultado }) => {
   const [info, setinfo] = useState([]);
   const [nombre, setnombre] = useState();
   const [capital, setcapital] = useState();
   const [region, setregion] = useState();
   const [lengua, setlengua] = useState([]);
-
   useEffect(() => {
     setinfo(resultado);
-    console.log('Valor del país en el componente Pais:', resultado); 
     lengua.length = 0;
     Object.values(info).map((e) => {
       setnombre(e.nome.abreviado);
@@ -22,7 +19,6 @@ const Pais = ({ resultado }) => {
       });
     });
   });
-
   return (
     <Card>
       <Card.Title>{nombre}</Card.Title>
@@ -35,5 +31,4 @@ const Pais = ({ resultado }) => {
     </Card>
   );
 };
-
 export default Pais;

@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Alert } from "react-native";
-import Formulario from "./src/Formulario";
-import Pais from "./src/pais";
+import React, { useState,useEffect} from "react";
+import { StyleSheet, Text, View ,Alert} from "react-native";
+import Formulario from "./src/Components/Formulario";
+import Pais from "./src/Components/pais";
 
 export default function App() {
-  const [busqueda, guardarbusqueda] = useState({
-    pais: "",
-  });
-  const [consultar, guardarconsultar] = useState(false);
+  const [busqueda, guardarbusqueda] = useState({ pais: '', });
+
+
+  const [consultar, guardarconsultar] = useState(false); 
+
   const [resultado, guardarresultado] = useState({});
+
   useEffect(() => {
-    const { pais } = busqueda;
     const consultarPais = async () => {
-      if (consultar) {
-        const url = `https://servicodados.ibge.gov.br/api/v1/paises/${pais}`;
+      if (consultar && busqueda.pais !== '') { // Verificar si hay que realizar la consulta
+        const url = `https://servicodados.ibge.gov.br/api/v1/paises/${busqueda.pais}`;
         try {
           const respuesta = await fetch(url);
           const resultado = await respuesta.json();
@@ -25,25 +26,25 @@ export default function App() {
       }
     };
     consultarPais();
-  }, [consultar]);
-  const mostrarAlerta = () => {
-    Alert.alert("Error", "No hay resultado intenta con otraciudad o país"),
-      [{ Text: "Ok" }];
-  };
+  }, [consultar, busqueda.pais]);
 
+  const mostrarAlerta = () => {
+  Alert.alert('Error', 'No hay resultado intenta con otra ciudad o país'),
+  [{ Text: 'Ok' }];
+  };
   return (
-    <View style={styles.app}>
-      <View style={styles.contenido}>
-        <Formulario
-          busqueda={busqueda}
-          guardarbusqueda={guardarbusqueda}
-          guardarconsultar={guardarconsultar}
-        />
-        <Pais resultado={resultado} />
-      </View>
-    </View>
+  <View style={styles.app}>
+  <View style={styles.contenido}>
+  <Formulario
+  busqueda={busqueda}
+  guardarbusqueda={guardarbusqueda}
+  guardarconsultar={guardarconsultar}
+  />
+  <Pais resultado={resultado} />
+  </View>
+  </View>
   );
-}
+  }///////////////////////////////////
 const styles = StyleSheet.create({
   app: {
     flex: 1,
@@ -54,3 +55,4 @@ const styles = StyleSheet.create({
     margin: "2.5%",
   },
 });
+
