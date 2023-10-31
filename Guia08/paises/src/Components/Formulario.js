@@ -15,14 +15,14 @@ const Formulario = ({ busqueda,guardarbusqueda ,guardarconsultar}) => {
   const { pais } = busqueda;
   const [selectedCountry, setSelectedCountry] = useState();
 
-const consultarPais=()=>{
-  if( pais.trim()===''){
-    mostrarAlerta();
-    return;
-  }
-  guardarbusqueda(true);
-};
-
+  const consultarPais = () => {
+    if (!selectedCountry) {
+      mostrarAlerta();
+      return;
+    }
+    guardarbusqueda({ ...busqueda, pais: selectedCountry });
+    guardarconsultar(true);
+  };
 const mostrarAlerta=()=>{
   Alert.alert('Error','Debe sleccionar un pais'),[{Text:'Entendido'}]
 }
@@ -57,10 +57,7 @@ const mostrarAlerta=()=>{
             <Picker.Item label="Peru" value="pe" />
           </Picker>
         </View>
-        <TouchableWithoutFeedback onPress={() => {
-  guardarbusqueda({ ...busqueda, pais: selectedCountry });
-  guardarconsultar(true);
-}}>
+        <TouchableWithoutFeedback onPress={() => {consultarPais()}}>
   <View style={styles.btnBuscar}>
     <Text style={styles.textoBuscar}>Buscar País</Text>
   </View>
