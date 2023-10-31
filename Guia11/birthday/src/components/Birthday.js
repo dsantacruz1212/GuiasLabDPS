@@ -5,7 +5,7 @@ const {birthday, daleteBirthday} = props;
 const pasat = birthday.days > 0 ? true : false;
 const infoDay = () => {
 if (birthday.days === 0) {
-return <Text style={{color: '#fff'}}>Es suy cumpleaños</Text>;
+return <Text style={{color: '#fff'}}>Es su cumpleaños</Text>;
 } else {
 const days = -birthday.days;
 return (
